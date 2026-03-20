@@ -85,3 +85,19 @@ sample_data = [
         'age': 38
     }
 ]   
+
+# function to print validation results in a readable format
+def print_validation_results(results):
+    for result in results:
+        print(f"Customer ID: {result['customer_id']}")
+        print(f"Is Valid: {result['is_valid']}")
+        if not result['is_valid']:
+            print("Errors:")
+            for error in result['errors']:
+                print(f" - {error}")
+        print("\n")
+        # loop through sample data and print validation results for each record
+validation_results = []
+for record in sample_data:
+    result = validate_customer_record(record)
+    validation_results.append(result)
